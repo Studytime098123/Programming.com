@@ -8,12 +8,12 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-south-1"  # You can change this region if needed
+  region = "ap-south-1" 
 }
 
 # S3 Bucket
 resource "aws_s3_bucket" "my_encrypted_bucket" {
-  bucket = "proggramming-com-s3-bucket-12345"  # Must be globally unique; adjust this name
+  bucket = "proggramming-com-s3-bucket-12345"  
 }
 
 # Server-side encryption configuration
