@@ -28,4 +28,8 @@ Please follow the steps from the link [Jenkins-ubuntu](https://www.jenkins.io/do
 
 ## Docker
 
-Docker install please follow the steps form
+Docker install please follow the steps form [Docker-ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+
+# SNYK
+
+For SNYK you need to open an account using google or github ([SNYK](https://snyk.io/))
