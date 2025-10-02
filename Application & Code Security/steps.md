@@ -29,7 +29,11 @@ Please follow the steps from the link [Jenkins-ubuntu](https://www.jenkins.io/do
 
 ## Docker
 
-Docker install please follow the steps form [Docker-ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  1. Docker install please follow the steps form [Docker-ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  2. give docker access to jenkins 
+     ```bash
+     sudo chmod -aG docker jenkins
+     ```
 
 # SNYK
 
@@ -60,4 +64,4 @@ sudo apt-get install -y trivy
 ```
 
 
-use the jenkins file above change the github link according to the need and run the pipeline 
+use the provided jenkins file change the github link according to the need and run the pipeline 
