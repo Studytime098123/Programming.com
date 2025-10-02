@@ -32,5 +32,5 @@ Docker install please follow the steps form [Docker-ubuntu](https://docs.docker.
 
 # SNYK
 
-  1.For SNYK you need to open an account using google or github ([SNYK](https://snyk.io/)
-  2.Install SNYK CLI on to the meachine 
+  1. For SNYK you need to open an account using google or github ([SNYK](https://snyk.io/))
+  2. Install SNYK CLI on to the meachine 
