@@ -36,8 +36,28 @@ Docker install please follow the steps form [Docker-ubuntu](https://docs.docker.
   1. For SNYK you need to open an account using google or github ([SNYK](https://snyk.io/))
   2. Install SNYK CLI on to the meachine by selecting on menu->integrations->Cli and install based on the operating systems
   3. add token to the jenkins user, Go to bottem select account name -> select account settings -> click and copy the token
-  4. on ubuntu change user
-     ''' bash
-     sudo su jenkins
-     '''
-  5. 
+  4. on ubuntu change user 
+  ```bash 
+  sudo su jenkins 
+  ```
+  5. type 
+  ```bash
+  snyk auth <token>
+  ```
+
+# TRIVY
+
+insatll trivy on meachine 
+```bash
+sudo apt-get update -y
+sudo apt-get install -y wget apt-transport-https gnupg lsb-release
+
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/trivy.list
+
+sudo apt-get update -y
+sudo apt-get install -y trivy
+```
+
+
+use the jenkins file above change the github link according to the need and run the pipeline 
