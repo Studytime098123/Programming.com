@@ -24,7 +24,7 @@ This is a assignment project about creating the multistage Dockerfile and implem
 
 ## Jenkins Installation
 
-Please follow the steps from the link [Jenkins-ubuntu](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu" target="_blank)
+Please follow the steps from the link [Jenkins-ubuntu](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu)
 
 ## Docker
 
