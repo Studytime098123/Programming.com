@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git clone') {
+            steps {
+                echo 'cloning'
+                git branch: 'main', url: 'https://github.com/Studytime098123/FullStack-Blogging-App.git'
+            }
+        }
+        stage('docker multi stage build') {
+            steps {
+                echo 'building docker images using multistage docker file'
+                sh '''
+                docker build -f Dockerfile-multistage -t myapp:${BUILD_ID} .
+                docker images
+                '''
+            }
+        }
+        
+        stage('Snyk') {
+            steps {
+                echo 'Doing SAST sccaning using SNYK cli tool'
+                sh '''
+                snyk code test --severity-threshhold=high > snyk-results.json
+                '''
+            }
+        }
+        
+        stage('Trivy') {
+            steps {
+                echo 'Doing SCA sccaning using TRIVY cli tool'
+                sh '''
+            #    trivy fs -severity HIGH,CRITICAL --exit-code 1 . > Trivy-results.json
+                 trivy fs . > Trivy-results.json
+                '''
+            }
+        }
+    }
+}
