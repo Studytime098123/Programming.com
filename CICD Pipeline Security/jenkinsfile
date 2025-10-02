@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git clone') {
+            steps {
+                echo 'clonning the repo'
+                git branch: 'main', url: 'https://github.com/Studytime098123/junit-examples.git'
+            }
+        }
+        
+        stage('maven test') {
+            steps {
+                echo 'running maven test casses '
+                sh 'pwd'
+                sh '''
+                mvn -f junit-migration-maven/pom.xml test
+                '''
+            }
+        }
+        
+        stage('maven build') {
+            steps {
+                echo 'building the code using maven'
+                sh 'mvn -f junit-migration-maven/pom.xml package'
+            }
+        }
+        
+        stage('SNYK security test') {
+            steps {
+                echo 'running security test using SNYK'
+                sh 'snyk test --file=junit-migration-maven/pom.xml --severity-threshold=high'
+            }
+        }
+        
+        stage('docker build and run') {
+            steps {
+                echo 'running docker file and running ir'
+                sh '''
+                pwd
+                docker build -f junit-migration-maven/Dockerfile \
+                -t cicdpipelinesecurity:${BUILD_NUMBER} \
+                junit-migration-maven
+              #  docker run -d --name cicdpipelinesecurity -p 8081:8080 cicdpipelinesecurity:${BUILD_NUMBER}
+                
+                '''
+            }
+        }
+    }
+}
